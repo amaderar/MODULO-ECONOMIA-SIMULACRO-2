@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Simulacro Economía — Principios de Economía — Escuelas, Mercados, Indicadores y Comercio Internacional — Asesorías Académicas Izamal</title>
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#0033cc;--azul-dark:#002299;--azul-light:#e8eeff;--naranja:#ff4500;--naranja-mid:#ff8c00;--bg:#f0f4ff;--card:#fff;--txt:#1a1a2e;--sub:#5a6080;--rad:14px;--shadow:0 6px 24px rgba(0,51,204,.13);}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 0 30px;}
+.hero{width:100%;background:linear-gradient(135deg,#0033cc 0%,#0011aa 60%,#001188 100%);padding:24px 20px 18px;display:flex;flex-direction:column;align-items:center;margin-bottom:18px;box-shadow:0 4px 20px rgba(0,0,0,.25);}
+.hero-inner{max-width:760px;width:100%;display:flex;align-items:center;gap:16px;}
+.hero-logo{width:76px;height:76px;flex-shrink:0;background:#fff;border-radius:50%;padding:5px;box-shadow:0 4px 14px rgba(0,0,0,.3);}
+.hero-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%;}
+.hero-title{font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;}
+.hero-title span{color:#ff8c00}
+.hero-subtitle{font-size:.76rem;color:rgba(255,255,255,.8);margin-top:4px;line-height:1.5;}
+.hero-badge{display:inline-block;background:rgba(255,140,0,.25);border:1px solid rgba(255,140,0,.5);border-radius:20px;padding:3px 12px;font-size:.68rem;color:#ffd080;font-weight:700;margin-top:6px;}
+.hero-stripe{width:100%;height:4px;background:linear-gradient(90deg,#ff4500,#ff8c00,#ff4500);margin-top:16px;border-radius:3px;opacity:.7;}
+.wrap{width:100%;max-width:760px;padding:0 12px;}
+.card{background:var(--card);border-radius:var(--rad);box-shadow:var(--shadow);padding:22px 20px;margin-bottom:14px;}
+#screen-home h2{font-size:1.2rem;text-align:center;margin-bottom:6px;color:var(--azul);font-weight:800;}
+.home-sub{text-align:center;color:var(--sub);margin-bottom:18px;font-size:.84rem;line-height:1.6;}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.info-card{background:var(--azul-light);border-radius:12px;padding:13px 8px;text-align:center;border:2px solid #c0d0f0;}
+.info-card .val{font-size:1.3rem;font-weight:800;color:var(--azul);}
+.info-card .lbl{font-size:.7rem;color:var(--sub);margin-top:3px;font-weight:600;}
+.btn-primary{width:100%;border:none;border-radius:12px;padding:14px;cursor:pointer;font-size:.97rem;font-weight:800;background:linear-gradient(135deg,var(--naranja),var(--naranja-mid));color:#fff;box-shadow:0 4px 14px rgba(255,69,0,.35);transition:opacity .2s,transform .1s;}
+.btn-primary:hover{opacity:.92;}.btn-primary:active{transform:scale(.98);}
+#screen-exam{padding:0;}
+.exam-header{padding:14px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+.lectura-pill{font-size:.76rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--azul),var(--azul-dark));padding:5px 13px;border-radius:20px;max-width:65%;line-height:1.3;}
+.timer-box{font-size:1rem;font-weight:800;padding:5px 13px;border-radius:20px;background:var(--azul-light);color:var(--azul);min-width:72px;text-align:center;border:2px solid #c0d0f0;flex-shrink:0;transition:all .3s;}
+.timer-box.warn{background:#fff3e8;color:#cc5500;border-color:#ffb080;}
+.timer-box.danger{background:#fff0f0;color:#cc0000;border-color:#ffb0b0;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.progress-wrap{margin:0 20px 6px;height:6px;background:#e0e8ff;border-radius:3px;overflow:hidden;}
+.progress-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--naranja),var(--naranja-mid));transition:width .35s;}
+.nav-section{padding:8px 20px 12px;border-bottom:2px solid var(--azul-light);}
+.nav-label{font-size:.69rem;color:var(--sub);margin-bottom:6px;font-weight:700;letter-spacing:.3px;}
+.nav-grid{display:flex;flex-wrap:wrap;gap:5px;}
+.nav-sep{width:100%;font-size:.67rem;color:var(--sub);font-weight:700;margin:5px 0 3px;letter-spacing:.3px;}
+.nav-btn{width:30px;height:30px;border-radius:7px;border:2px solid #d0d8f0;background:#fff;font-size:.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;color:var(--txt);flex-shrink:0;}
+.nav-btn:hover{border-color:var(--azul);background:var(--azul-light);}
+.nav-btn.answered{background:var(--azul);border-color:var(--azul);color:#fff;}
+.nav-btn.wrong-nav{background:var(--naranja);border-color:var(--naranja);color:#fff;}
+.nav-btn.current{border-width:3px;transform:scale(1.1);}
+.exam-body{padding:14px 20px 20px;}
+.lectura-header{font-size:.88rem;font-weight:800;color:var(--azul);margin-bottom:12px;padding:8px 12px;background:var(--azul-light);border-radius:9px;border-left:4px solid var(--azul);}
+.lectura-texto{font-size:.87rem;line-height:1.8;color:var(--txt);margin-bottom:18px;padding:14px 16px;background:#fafbff;border:1px solid #d8e0f0;border-radius:10px;max-height:260px;overflow-y:auto;}
+.lectura-texto p{margin-bottom:10px;}.lectura-texto p:last-child{margin-bottom:0;}
+.q-num{font-size:.72rem;color:var(--sub);margin-bottom:6px;font-weight:700;letter-spacing:.3px;}
+.q-text{font-size:.94rem;line-height:1.7;margin-bottom:14px;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:9px;}
+.opt-btn{border:2px solid #d0d8f0;border-radius:10px;background:#fff;padding:11px 14px;text-align:left;cursor:pointer;font-size:.88rem;line-height:1.5;transition:border-color .18s,background .18s;display:flex;align-items:flex-start;gap:10px;width:100%;}
+.opt-btn:hover:not(:disabled){border-color:var(--azul);background:var(--azul-light);}
+.opt-letter{min-width:26px;height:26px;border-radius:50%;background:#e8eeff;font-weight:800;font-size:.79rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--azul);}
+.opt-btn.correct{border-color:#27ae60;background:#eafaf1;}.opt-btn.correct .opt-letter{background:#27ae60;color:#fff;}
+.opt-btn.wrong{border-color:var(--naranja);background:#fff3f0;}.opt-btn.wrong .opt-letter{background:var(--naranja);color:#fff;}
+.opt-btn:disabled{cursor:default;}
+.explanation{display:none;margin-top:11px;background:#f8f9fe;border-left:4px solid #27ae60;padding:9px 13px;border-radius:0 8px 8px 0;font-size:.83rem;line-height:1.65;color:var(--txt);}
+.explanation.show{display:block;}.explanation.fail{border-left-color:var(--naranja);}
+.exam-footer{padding:0 20px 18px;display:flex;gap:8px;align-items:center;margin-top:12px;}
+.btn-nav{flex:1;padding:10px 5px;border-radius:10px;border:2px solid #d0d8f0;background:#fff;font-size:.85rem;font-weight:700;cursor:pointer;color:var(--txt);transition:all .18s;}
+.btn-nav:hover{border-color:var(--azul);background:var(--azul-light);}.btn-nav:disabled{opacity:.35;cursor:default;}
+.btn-entregar{padding:10px 15px;border-radius:10px;border:none;font-size:.85rem;font-weight:800;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--naranja),var(--naranja-mid));white-space:nowrap;box-shadow:0 3px 10px rgba(255,69,0,.3);}
+#screen-timeout{text-align:center;}
+#screen-timeout h2{font-size:1.2rem;margin-bottom:10px;color:var(--naranja);}
+#screen-timeout p{color:var(--sub);margin-bottom:20px;line-height:1.6;}
+#screen-results h2{text-align:center;font-size:1.2rem;margin-bottom:14px;color:var(--azul);font-weight:800;}
+.result-summary{background:linear-gradient(135deg,var(--azul),var(--azul-dark));border-radius:14px;padding:20px;text-align:center;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,51,204,.25);}
+.result-score{font-size:2.5rem;font-weight:800;color:#fff;}
+.result-label{font-size:.82rem;color:rgba(255,255,255,.8);margin-top:3px;}
+.lect-results{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.lect-card{border-radius:12px;padding:13px;border:2px solid #c0d0f0;background:var(--azul-light);}
+.lect-card-title{font-size:.68rem;font-weight:800;color:var(--azul);text-transform:uppercase;letter-spacing:.3px;margin-bottom:6px;}
+.lect-card-score{font-size:1.5rem;font-weight:800;color:var(--azul);}
+.lect-card-pct{font-size:.75rem;color:var(--sub);margin-top:2px;}
+.result-bars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px;}
+.rbar-card{border-radius:11px;padding:11px 7px;text-align:center;color:#fff;}
+.rbar-val{font-size:1.2rem;font-weight:800;}.rbar-lbl{font-size:.67rem;opacity:.85;margin-top:2px;}
+.cne-block{background:#fff;border:2px solid #c0d0f0;border-radius:12px;padding:15px 17px;margin-bottom:14px;}
+.cne-title{font-size:.73rem;font-weight:800;color:var(--azul);letter-spacing:.4px;margin-bottom:9px;text-transform:uppercase;}
+.cne-score-row{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;}
+.cne-score{font-size:2.4rem;font-weight:800;line-height:1;}
+.cne-max{font-size:.8rem;color:var(--sub);font-weight:600;}
+.cne-label{font-size:.8rem;font-weight:700;margin-bottom:11px;}
+.cne-scale-labels{display:flex;justify-content:space-between;font-size:.62rem;color:var(--sub);margin-bottom:3px;}
+.cne-track{height:10px;background:#e8eeff;border-radius:5px;overflow:hidden;}
+.cne-fill{height:100%;border-radius:5px;transition:width .9s ease;}
+.cne-ticks{display:flex;justify-content:space-between;margin-top:2px;}.cne-tick{font-size:.58rem;color:#aab4d4;}
+.cne-note{font-size:.67rem;color:var(--sub);margin-top:8px;line-height:1.5;border-top:1px solid #e8eeff;padding-top:6px;}
+.review-section h3{font-size:.86rem;margin-bottom:9px;font-weight:800;color:var(--azul);}
+.rev-lect-hdr{font-size:.78rem;font-weight:800;margin:12px 0 7px;padding:5px 11px;border-radius:7px;background:var(--azul-light);color:var(--azul);}
+.rev-item{border:1px solid #d8e4f8;border-radius:9px;padding:11px 13px;margin-bottom:7px;}
+.rev-header{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+.rev-badge{font-size:.67rem;font-weight:700;padding:2px 7px;border-radius:20px;}
+.rev-badge.ok{background:#d5f5e3;color:#1e8449;}.rev-badge.fail{background:#fce4e4;color:#c0392b;}.rev-badge.skip{background:#f0f0f0;color:#888;}
+.rev-num{font-size:.68rem;color:#aaa;}.rev-q{font-size:.83rem;line-height:1.5;margin-bottom:4px;}
+.rev-ans{font-size:.77rem;color:var(--sub);}.rev-ans.ok-ans{color:#1e8449;font-weight:600;}
+.rev-exp{font-size:.77rem;color:var(--txt);margin-top:4px;border-top:1px solid #eef0f8;padding-top:4px;line-height:1.5;}
+.btn-retry{background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;border:none;border-radius:12px;width:100%;padding:12px;font-size:.93rem;font-weight:800;cursor:pointer;margin-top:10px;}.btn-retry:hover{opacity:.88;}
+.modal-bg{position:fixed;inset:0;background:rgba(0,20,80,.5);display:none;align-items:center;justify-content:center;z-index:999;padding:16px;}
+.modal-bg.open{display:flex;}
+.modal{background:#fff;border-radius:14px;padding:22px 18px;max-width:330px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.2);}
+.modal h3{font-size:.97rem;margin-bottom:7px;color:var(--azul);font-weight:800;}
+.modal p{font-size:.83rem;color:var(--sub);margin-bottom:16px;line-height:1.6;}
+.modal-btns{display:flex;gap:8px;}.modal-btns button{flex:1;padding:10px;border-radius:9px;border:none;font-size:.86rem;font-weight:700;cursor:pointer;}
+.btn-cancel{background:#eef0f8;color:var(--txt);}.btn-confirm{background:linear-gradient(135deg,var(--naranja),var(--naranja-mid));color:#fff;}
+@media(max-width:560px){body{padding:0 0 20px;}.wrap{padding:0 8px;}.card{padding:16px 12px;}.exam-header,.exam-body,.exam-footer,.nav-section,.progress-wrap{padding-left:13px;padding-right:13px;}.nav-btn{width:27px;height:27px;font-size:.74rem;}.result-score{font-size:2rem;}.cne-score{font-size:1.9rem;}.lect-results{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr 1fr;}}
+
+.habilidades-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.hab-tag{background:var(--azul-light);border:1px solid #c0d0f0;border-radius:8px;
+  padding:9px 10px;font-size:.76rem;color:var(--azul);font-weight:600;
+  display:flex;align-items:center;gap:7px;}
+.q-text{white-space:pre-line;font-size:.93rem;line-height:1.8;margin-bottom:14px;font-weight:500;}
+.tip-box{background:#f0f7ff;border:1px solid #c0d8f0;border-radius:10px;
+  padding:11px 14px;margin-bottom:16px;font-size:.8rem;color:#2c5282;line-height:1.7;}
+</style>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo"><img src="logo.png" alt="Logo" style="width:60px;height:60px;object-fit:contain"></div>
+    <div>
+      <div class="hero-title">Asesorías Académicas <span>Izamal</span></div>
+      <div class="hero-subtitle">Simulacro EXANI-II · Economía · Subárea 1: Principios de Economía</div>
+      <span class="hero-badge">📈 Subárea 1: Principios de Economía</span>
+    </div>
+  </div>
+  <div class="hero-stripe"></div>
+</div>
+<div class="wrap">
+<div class="card" id="screen-home">
+  <h2>Simulacro 2 — Principios de Economía — Escuelas, Mercados, Indicadores y Comercio Internacional</h2>
+  <p class="home-sub">Repaso general · Módulo Economía EXANI-II<br>Reactivos basados en exámenes reales .</p>
+  <div class="habilidades-grid"><div class="hab-tag"><span>🏛️</span> Escuelas económicas: monetarismo, keynesianismo (6) — reactivos reales</div><div class="hab-tag"><span>📈</span> Oferta, demanda y elasticidad (5)</div><div class="hab-tag"><span>💹</span> Indicadores: PIB real vs nominal, inflación (5)</div><div class="hab-tag"><span>🌍</span> Comercio internacional: ventaja comparativa, bloques (5)</div><div class="hab-tag"><span>💰</span> Tipos de desempleo y financiamiento (3)</div></div>
+  <div class="info-grid">
+    <div class="info-card"><div class="val">24</div><div class="lbl">Preguntas</div></div>
+    <div class="info-card"><div class="val">40 min</div><div class="lbl">Tiempo</div></div>
+    <div class="info-card"><div class="val">V2</div><div class="lbl">Versión</div></div>
+  </div>
+  <div class="tip-box">💡 <strong>Tip EXANI-II:</strong> En Economía asocia cada escuela con sus postulados y autores. En oferta y demanda, identifica si el cambio desplaza la curva o es un movimiento sobre ella. En macroeconomía, distingue política fiscal de monetaria.</div>
+  <button class="btn-primary" onclick="startExam()">▶ Comenzar simulacro</button>
+</div>
+<div class="card" id="screen-exam" style="display:none;padding:0">
+  <div class="exam-header">
+    <div class="lectura-pill">📈 Subárea 1: Principios de Economía</div>
+    <div class="timer-box" id="timer-box">40:00</div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+  <div class="nav-section">
+    <div class="nav-label">Azul: correcta · Naranja: incorrecta · Gris: pendiente</div>
+    <div class="nav-grid" id="nav-grid"></div>
+  </div>
+  <div class="exam-body">
+    <div class="q-num" id="q-num"></div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options"></div>
+    <div class="explanation" id="explanation"></div>
+  </div>
+  <div class="exam-footer">
+    <button class="btn-nav" id="btn-prev" onclick="goTo(STATE.qIdx-1)">← Anterior</button>
+    <button class="btn-nav" id="btn-next-nav" onclick="goTo(STATE.qIdx+1)">Siguiente →</button>
+    <button class="btn-entregar" id="btn-entregar" style="display:none" onclick="pedirConfirmar()">Entregar</button>
+  </div>
+</div>
+<div class="card" id="screen-timeout" style="display:none">
+  <h2 style="color:var(--naranja);text-align:center;margin-bottom:10px">⏰ Tiempo agotado</h2>
+  <p style="text-align:center;color:var(--sub);margin-bottom:20px">Se agotó el tiempo. Las preguntas sin responder cuentan como incorrectas.</p>
+  <button class="btn-retry" onclick="finishAndShow()">Ver resultados →</button>
+</div>
+<div class="card" id="screen-results" style="display:none">
+  <h2>📊 Resultados del simulacro</h2>
+  <div class="result-summary"><div class="result-score" id="res-score">—</div><div class="result-label">Reactivos correctos · 24 preguntas</div></div>
+  <div class="cne-block">
+    <div class="cne-title">📊 Índice CENEVAL Estimado</div>
+    <div class="cne-score-row"><span class="cne-score" id="cne-val">—</span><span class="cne-max">/ 1300</span></div>
+    <div class="cne-label" id="cne-lbl"></div>
+    <div class="cne-scale-labels"><span>700</span><span>800</span><span>900</span><span>1000</span><span>1100</span><span>1200</span><span>1300</span></div>
+    <div class="cne-track"><div class="cne-fill" id="cne-bar" style="width:0%"></div></div>
+    <div class="cne-ticks"><span class="cne-tick">▲Mín</span><span class="cne-tick" style="margin:0 auto">▲Media(1000)</span><span class="cne-tick">Máx▲</span></div>
+    <div class="cne-note" id="cne-note"></div>
+  </div>
+  <div class="result-bars">
+    <div class="rbar-card" style="background:#27ae60"><div class="rbar-val" id="res-ok">0</div><div class="rbar-lbl">Correctas</div></div>
+    <div class="rbar-card" style="background:var(--naranja)"><div class="rbar-val" id="res-fail">0</div><div class="rbar-lbl">Incorrectas</div></div>
+    <div class="rbar-card" style="background:#95a5a6"><div class="rbar-val" id="res-skip">0</div><div class="rbar-lbl">Sin responder</div></div>
+  </div>
+  <div class="review-section"><h3>Revisión detallada</h3><div id="review-list"></div></div>
+  <button class="btn-retry" onclick="retryExam()">🔄 Intentar de nuevo</button>
+</div>
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <h3>¿Entregar el simulacro?</h3><p id="modal-msg"></p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn-confirm" onclick="confirmarEntrega()">Entregar</button>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+const BANCO = [
+{
+"tipo": "regular",
+"enunciado": "¿Cuál es la escuela del pensamiento económico que relaciona la acumulación de dinero con la inflación y cuyo planteamiento es 'el control responsable de la oferta de dinero será garantía de la estabilidad económica'?",
+"a": "Escuela keynesiana",
+"b": "Escuela clásica",
+"c": "Escuela monetarista",
+"correcta": "c",
+"exp": "La escuela monetarista (Friedman, Hayek): postula que 'la inflación es siempre y en todo lugar un fenómeno monetario' (Friedman). El control de la oferta de dinero por el banco central es la mejor garantía de estabilidad económica. Se opone al gasto deficitario keynesiano. El Banco de México (BANXICO) aplica principios monetaristas al controlar la tasa de interés de referencia para contener la inflación. Reactivo real del banco de preguntas de admisión universitaria (matemáticasn.blogspot.com)."
+},
+{
+"tipo": "regular",
+"enunciado": "El pensamiento que señala que 'la igualdad para todos y que la plusvalía es retenida por el capitalista' corresponde a la doctrina:",
+"a": "Fisiocrática",
+"b": "Monetarista",
+"c": "Socialista (marxista)",
+"correcta": "c",
+"exp": "El socialismo marxista (Marx y Engels): la plusvalía es la diferencia entre el valor producido por el trabajador y el salario que recibe; es retenida por el capitalista como ganancia. Propugna la igualdad social y la propiedad colectiva de los medios de producción. La lucha de clases (burguesía vs. proletariado) es el motor de la historia. El comunismo sería la etapa final de evolución social. Reactivo real del banco de preguntas de admisión universitaria (Studocu/matemáticasn)."
+},
+{
+"tipo": "regular",
+"enunciado": "Una economía entra en contracción y el gobierno decide aumentar el gasto público en obras de infraestructura. Esta medida representa una acción de política _______ que sigue los lineamientos de la escuela _______.",
+"a": "Monetaria – monetarista",
+"b": "Fiscal – keynesiana",
+"c": "Comercial – neoclásica",
+"correcta": "b",
+"exp": "Política fiscal: acciones del gobierno que modifican el gasto público y/o los impuestos para influir en la actividad económica. Aumentar el gasto público en recesión es política fiscal expansiva. Esta es la receta keynesiana: en crisis, el Estado debe gastar más para estimular la demanda agregada y recuperar el empleo. Los monetaristas prefieren la política monetaria (control de la oferta de dinero). Reactivo real de Studocu banco de preguntas admisión universitaria."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son los tipos de actividades económicas según el sector productivo?",
+"a": "Actividades primarias (producción directa), secundarias (manufactura) y terciarias (servicios).",
+"b": "Actividades formales (registradas) e informales (no registradas).",
+"c": "Actividades rentables y no rentables.",
+"correcta": "a",
+"exp": "Sector primario: extracción y producción de materias primas directamente de la naturaleza (agricultura, ganadería, pesca, silvicultura, minería). Sector secundario: transformación de materias primas en bienes manufacturados (industria, construcción). Sector terciario: prestación de servicios (comercio, transporte, educación, salud, turismo, banca, comunicaciones). En México, el sector terciario representa ~65% del PIB. La economía informal es aquella que opera fuera del registro fiscal, pero puede pertenecer a cualquier sector."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuál es la diferencia entre el PIB nominal y el PIB real?",
+"a": "El PIB nominal mide la producción solo del sector industrial; el real incluye servicios.",
+"b": "El PIB nominal mide el valor de la producción a precios corrientes (del año); el PIB real deflacta por la inflación usando un año base para comparar el crecimiento real.",
+"c": "Son el mismo indicador con diferente nombre según el período de medición.",
+"correcta": "b",
+"exp": "PIB nominal (corriente): valor de la producción a precios del año en curso. Puede crecer por aumento real de producción O por inflación. PIB real (constante): descuenta el efecto de la inflación usando un año base como referencia; mide el crecimiento real de la economía. Para comparar el PIB entre años diferentes, siempre se usa el real. Si el PIB nominal crece 10% pero la inflación es 8%, el PIB real solo creció 2% (la economía realmente produjo 2% más)."
+},
+{
+"tipo": "asoc",
+"enunciado": "Relaciona cada escuela económica con su postura respecto al rol del Estado.\n1. Mercantilismo  2. Clásica  3. Keynesiana  4. Monetarista\n—\na) El Estado debe controlar solo la oferta de dinero; el mercado libre resuelve todo lo demás.\nb) El Estado debe intervenir activamente en recesiones mediante gasto público y política fiscal expansiva.\nc) El Estado debe fomentar las exportaciones y restringir las importaciones para acumular riqueza nacional.\nd) El Estado debe interferir lo mínimo posible; la 'mano invisible' del mercado genera bienestar.",
+"a": "1c - 2d - 3b - 4a",
+"b": "1d - 2c - 3a - 4b",
+"c": "1b - 2a - 3d - 4c",
+"correcta": "a",
+"exp": "Mercantilismo (1c): Estado muy activo en el comercio exterior para acumular metales. Clásica (2d): Smith: 'mano invisible'; el mercado libre sin intervención genera bienestar máximo. Keynesiana (3b): en recesiones, el mercado falla; el Estado debe estimular la demanda. Monetarista (4a): el mercado libre funciona; el Estado solo debe controlar la oferta de dinero para evitar la inflación."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son los factores que desplazan la curva de oferta (diferente de un movimiento sobre la curva)?",
+"a": "Un cambio en el precio del bien (eso es movimiento sobre la curva, no desplazamiento).",
+"b": "Cambios en los costos de producción, tecnología, precios de insumos, número de productores, expectativas y políticas gubernamentales (impuestos/subsidios).",
+"c": "Solo un cambio en el ingreso de los consumidores.",
+"correcta": "b",
+"exp": "La curva de oferta se desplaza cuando cambia algo diferente al precio del propio bien: Costos de producción: si bajan (insumos más baratos), la oferta aumenta (curva se desplaza a la derecha). Tecnología: mejoras tecnológicas reducen costos y aumentan la oferta. Número de productores: más productores → mayor oferta. Expectativas: si se espera precio futuro mayor, productores pueden retener oferta hoy. Subsidios gubernamentales: aumentan la oferta. Impuestos: reducen la oferta. El precio del bien solo provoca movimiento sobre la misma curva."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuál es el concepto de elasticidad precio de la demanda?",
+"a": "La variación del precio de un bien ante cambios en la demanda de otro bien.",
+"b": "La sensibilidad de la cantidad demandada ante cambios en el precio del bien: mide cuánto varía porcentualmente la demanda cuando el precio cambia 1%.",
+"c": "La elasticidad siempre es igual a 1 en todos los mercados.",
+"correcta": "b",
+"exp": "Elasticidad precio de la demanda (Ep) = % cambio en cantidad demandada / % cambio en precio. Si |Ep|>1: demanda elástica (muy sensible al precio; bienes de lujo, con sustitutos). Si |Ep|<1: demanda inelástica (poco sensible; bienes de primera necesidad, sin sustitutos: medicamentos, gasolina). Si |Ep|=1: elasticidad unitaria. La elasticidad determina el impacto de un cambio de precio sobre los ingresos del productor. Pasatuexam EXANI-II."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuál es la diferencia entre demanda individual y demanda de mercado?",
+"a": "Son lo mismo: la demanda de mercado es simplemente la demanda individual multiplicada por el precio.",
+"b": "La demanda individual es la cantidad que un consumidor específico quiere comprar a diferentes precios; la demanda de mercado es la suma horizontal de todas las demandas individuales a cada precio.",
+"c": "La demanda de mercado solo incluye la demanda de bienes de lujo.",
+"correcta": "b",
+"exp": "La demanda de mercado se obtiene sumando horizontalmente las curvas de demanda individuales: para cada nivel de precio, se suman las cantidades que todos los consumidores están dispuestos y pueden comprar. La pendiente de la curva de demanda de mercado es más negativa que la individual (mayor sensibilidad). Cuantos más consumidores haya en el mercado, mayor es la demanda de mercado."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son los determinantes de la demanda (factores que desplazan la curva)?",
+"a": "Solo el precio del bien y el ingreso del consumidor.",
+"b": "Ingreso del consumidor, precios de bienes relacionados (sustitutos y complementarios), gustos y preferencias, expectativas y número de consumidores.",
+"c": "Solo las preferencias y los gustos del consumidor.",
+"correcta": "b",
+"exp": "La curva de demanda se desplaza cuando cambia algo diferente al precio del propio bien: Ingreso: si aumenta, la demanda de bienes normales aumenta (se desplaza a la derecha); de bienes inferiores disminuye. Precios de bienes sustitutos: si sube el café, aumenta la demanda de té. Precios de complementarios: si sube el precio del auto, baja la demanda de gasolina. Gustos: una moda o campaña publicitaria puede aumentar la demanda. Expectativas: si se espera escasez, la demanda sube hoy. Más consumidores: mayor demanda de mercado."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son las principales corrientes del pensamiento económico en el siglo XX?",
+"a": "Solo el keynesianismo y el monetarismo.",
+"b": "Keynesianismo, monetarismo, neoliberalismo, estructuralismo latinoamericano, economía del desarrollo y la síntesis neoclásica.",
+"c": "Solo el marxismo y el capitalismo.",
+"correcta": "b",
+"exp": "Principales corrientes del s. XX: Keynesianismo (1930s+): intervención estatal ante fallas del mercado. Monetarismo (1960s+, Friedman): control de oferta monetaria. Neoliberalismo (1980s, Thatcher/Reagan): privatización, desregulación, apertura comercial. Estructuralismo (CEPAL, Prebisch): análisis de la dependencia económica de América Latina. Economía del desarrollo: Rostow, Sen. Síntesis neoclásica: integración de Keynes con la microeconomía neoclásica. Hoy predomina la economía mainstream que combina elementos de varias corrientes."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Qué es el costo marginal en microeconomía?",
+"a": "El costo total de producir todos los bienes de una empresa en un período.",
+"b": "El incremento en el costo total al producir una unidad adicional de un bien.",
+"c": "El costo fijo que no varía con la producción.",
+"correcta": "b",
+"exp": "Costo marginal (CMg) = ΔCT/ΔQ: el cambio en el costo total cuando se produce una unidad adicional. Es fundamental en la teoría del productor: la empresa maximiza beneficios cuando precio = costo marginal (P=CMg, en competencia perfecta). Si CMg < precio → conviene producir más. Si CMg > precio → conviene producir menos. La curva de CMg tiene forma de U (primero decrece por rendimientos crecientes, luego aumenta por rendimientos decrecientes)."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Qué es la utilidad marginal y cuál es su tendencia según la ley de utilidad marginal decreciente?",
+"a": "La utilidad marginal aumenta con cada unidad adicional consumida.",
+"b": "La satisfacción adicional (utilidad) que obtiene el consumidor al consumir una unidad más de un bien; tiende a disminuir con cada unidad adicional (ley de la utilidad marginal decreciente).",
+"c": "La utilidad marginal es siempre constante sin importar la cantidad consumida.",
+"correcta": "b",
+"exp": "Ley de utilidad marginal decreciente (Gossen, 1854): la satisfacción adicional (utilidad marginal) que genera cada unidad consumida de un bien disminuye conforme se consume más del mismo bien, manteniendo constante el consumo de otros bienes. Ejemplo: el primer vaso de agua cuando tienes sed genera mucha utilidad; el quinto, muy poca. La utilidad marginal decreciente explica la pendiente negativa de la curva de demanda (menos precio para inducir mayor consumo)."
+},
+{
+"tipo": "asoc",
+"enunciado": "Relaciona cada indicador económico con lo que mide.\n1. PIB  2. Inflación  3. Desempleo  4. Balanza de pagos\n—\na) Registro sistemático de las transacciones económicas de un país con el resto del mundo.\nb) Tasa porcentual de aumento sostenido en el nivel general de precios.\nc) Porcentaje de la población económicamente activa que no tiene trabajo y lo busca.\nd) Valor total de bienes y servicios finales producidos en un país en un período.",
+"a": "1d - 2b - 3c - 4a",
+"b": "1c - 2d - 3a - 4b",
+"c": "1b - 2a - 3d - 4c",
+"correcta": "a",
+"exp": "PIB (1d): principal indicador de producción económica; lo calcula INEGI en México. Inflación (2b): medida por el INPC (Índice Nacional de Precios al Consumidor); la controla BANXICO. Desempleo (3c): tasa de desocupación; se mide con la Encuesta Nacional de Ocupación y Empleo (ENOE) del INEGI. Balanza de pagos (4a): cuenta corriente + cuenta de capital y financiera; la elabora BANXICO."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuál es la ley de la demanda en economía?",
+"a": "A mayor precio de un bien, mayor es la cantidad que los consumidores desean comprar.",
+"b": "A mayor precio de un bien, menor es la cantidad demandada, manteniendo constantes los demás factores (ceteris paribus).",
+"c": "La demanda siempre es igual a la oferta en todos los mercados.",
+"correcta": "b",
+"exp": "La ley de la demanda establece una relación inversa (negativa) entre el precio de un bien y la cantidad demandada, ceteris paribus: si el precio sube, los consumidores compran menos (efecto sustitución: buscan alternativas más baratas; efecto ingreso: el poder adquisitivo real disminuye). Si el precio baja, compran más. Esto genera una curva de demanda con pendiente negativa. Es una de las leyes más fundamentales de la microeconomía."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son los tipos de sistemas de producción según la propiedad?",
+"a": "Solo el capitalismo y el socialismo.",
+"b": "Producción artesanal, manufactura, producción industrial en masa y producción flexible (toyotismo), clasificados por el nivel tecnológico y la organización del trabajo.",
+"c": "Producción nacional e importada.",
+"correcta": "b",
+"exp": "Evolución histórica de los sistemas de producción: Artesanal: trabajo manual individual; pequeña escala; alta calidad; Edad Media. Manufactura: concentración de trabajadores en talleres; división del trabajo; s. XVII-XVIII. Producción industrial en masa (fordismo): cadena de montaje, estandarización; s. XX. Producción flexible (toyotismo/just-in-time): calidad total, cero inventarios, respuesta a la demanda; s. XX-XXI. Tecnología y organización del trabajo determinan la productividad."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son las fuentes de financiamiento de una empresa?",
+"a": "Solo las utilidades reinvertidas (financiamiento interno).",
+"b": "Financiamiento interno (utilidades retenidas) y externo (créditos bancarios, emisión de acciones, bonos corporativos, arrendamiento).",
+"c": "Solo los créditos bancarios a largo plazo.",
+"correcta": "b",
+"exp": "Las empresas se financian mediante: Fuentes internas: utilidades retenidas (reinversión de ganancias), depreciación acumulada. Fuentes externas: Deuda (créditos bancarios, emisión de bonos, arrendamiento financiero): la empresa se obliga a pagar intereses y capital. Capital (emisión de acciones en bolsa): los accionistas son dueños y reciben dividendos si hay ganancias. El costo del financiamiento externo (tasa de interés) influye en las decisiones de inversión empresarial."
+},
+{
+"tipo": "comp",
+"enunciado": "La escuela del pensamiento económico que propone que el Estado debe intervenir activamente en la economía, incrementando el gasto público en periodos de recesión para estimular la demanda agregada, es la escuela _______.\n\na) Monetarista\nb) Keynesiana\nc) Clásica",
+"a": "Monetarista",
+"b": "Keynesiana",
+"c": "Clásica",
+"correcta": "b",
+"exp": "John Maynard Keynes (1936) demostró que en recesiones los mercados no se autocorrigen automáticamente y el desempleo puede persistir. Propuso: aumentar el gasto público (inversión en infraestructura, educación, salud) para estimular la demanda agregada, el empleo y la producción. Esta política fiscal expansiva puede financiarse con déficit presupuestario ('la deuda pública puede ser útil en crisis'). Los clásicos y monetaristas se oponen; prefieren el ajuste espontáneo del mercado."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son los tipos de desempleo según sus causas?",
+"a": "Solo el desempleo estacional y el cíclico.",
+"b": "Desempleo friccional (búsqueda de empleo), estructural (cambios tecnológicos o sectoriales), cíclico (recesiones económicas) y estacional (actividades de temporada).",
+"c": "Solo el desempleo voluntario y el involuntario.",
+"correcta": "b",
+"exp": "Tipos de desempleo: Friccional: tiempo entre dejar un trabajo y encontrar otro; inevitable y relativamente breve. Estructural: desajuste entre habilidades disponibles y demandadas (tecnología o cambio de sector). Cíclico: causado por recesiones económicas; disminuye cuando la economía se recupera. Estacional: actividades con demanda variable (turismo, agricultura). El desempleo 'natural' (frictional+structural) existe incluso en pleno empleo (~4-5% en economías desarrolladas)."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Qué es el índice de precios al consumidor (IPC/INPC) y para qué se usa?",
+"a": "Mide el precio de las acciones en la Bolsa de Valores.",
+"b": "Mide la variación promedio de los precios de una canasta representativa de bienes y servicios que consume un hogar típico; se usa para calcular la inflación.",
+"c": "Mide el valor total de la producción industrial del país.",
+"correcta": "b",
+"exp": "El INPC (Índice Nacional de Precios al Consumidor) en México lo calcula el INEGI. Mide mensualmente el cambio en los precios de una canasta de ~315 bienes y servicios representativos del consumo de los hogares mexicanos (alimentos, transporte, vivienda, salud, educación). La inflación = variación % del INPC respecto al período anterior. BANXICO tiene como mandato mantener la inflación cerca del 3% anual (±1%). La inflación elevada erosiona el poder adquisitivo."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son las principales políticas económicas que puede aplicar un gobierno?",
+"a": "Solo la política de control de precios.",
+"b": "Política fiscal (gasto público e impuestos), política monetaria (oferta de dinero y tasas de interés), política comercial (aranceles y acuerdos comerciales) y política de ingresos (salarios mínimos).",
+"c": "Solo la política de privatización de empresas.",
+"correcta": "b",
+"exp": "Políticas económicas: Fiscal: el gobierno ajusta el gasto público y los impuestos para influir en la actividad económica. Monetaria: el banco central controla la oferta de dinero y las tasas de interés para controlar la inflación y estimular el crecimiento. Comercial: aranceles, cuotas, acuerdos de libre comercio. De ingresos: salario mínimo, control de precios, negociaciones salariales. En México: la SHCP maneja la política fiscal; BANXICO la monetaria."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuáles son las características de la globalización económica?",
+"a": "La globalización económica es la integración política de los países en un gobierno mundial.",
+"b": "La globalización económica es la integración creciente de los mercados mundiales de bienes, servicios, capital y trabajo mediante el libre comercio, la inversión extranjera y la tecnología.",
+"c": "La globalización beneficia por igual a todos los países y no genera desigualdades.",
+"correcta": "b",
+"exp": "La globalización económica se caracteriza por: Libre comercio internacional (reducción de aranceles: GATT/OMC, TLCAN/T-MEC). Inversión extranjera directa (IED): empresas multinacionales instalan filiales en otros países. Libre circulación de capitales: mercados financieros globales. Cadenas globales de valor: producción distribuida en varios países. Tecnología: internet reduce costos de transacción. Críticas: puede aumentar la desigualdad entre países, debilitar industrias locales y reducir la soberanía económica."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Qué son los bloques comerciales y cuál es su objetivo?",
+"a": "Los bloques comerciales son organismos financieros internacionales que otorgan préstamos.",
+"b": "Son acuerdos de integración económica entre países que reducen o eliminan barreras comerciales entre sus miembros para aumentar el comercio y la cooperación económica.",
+"c": "Son alianzas militares que también incluyen acuerdos económicos.",
+"correcta": "b",
+"exp": "Los bloques comerciales buscan aprovechar las ventajas del libre comercio entre sus miembros. Tipos: Zona de libre comercio (T-MEC: México, EUA, Canadá): elimina aranceles entre miembros. Unión aduanera: zona libre + arancel externo común. Mercado común: + libre circulación de personas y capital. Unión económica (UE): + políticas económicas coordinadas. Algunos bloques: T-MEC (América del Norte), MERCOSUR (América del Sur), UE (Europa), ASEAN (Asia). La OMC regula el comercio mundial."
+},
+{
+"tipo": "regular",
+"enunciado": "¿Cuál es la diferencia entre ventaja absoluta y ventaja comparativa en el comercio internacional?",
+"a": "Son lo mismo: si un país produce más eficientemente, tiene ventaja en ambos sentidos.",
+"b": "Ventaja absoluta: un país produce un bien con menos recursos que otro. Ventaja comparativa (Ricardo): un país debe especializarse en el bien que produce con menor costo de oportunidad relativo, aunque no tenga ventaja absoluta en nada.",
+"c": "La ventaja comparativa solo aplica entre países con economías del mismo tamaño.",
+"correcta": "b",
+"exp": "Adam Smith: ventaja absoluta (produce el bien con menos trabajo). David Ricardo (1817): ventaja comparativa: incluso si un país es más eficiente en todo, ambos ganan comerciando si cada uno se especializa en lo que produce con menor costo de oportunidad relativo. Ejemplo: si México produce maíz y autos con menos recursos que Brasil, pero la diferencia relativa es mayor en maíz → México se especializa en maíz; Brasil en autos. El libre comercio basado en ventaja comparativa aumenta el bienestar global."
+}
+];
+const TIEMPO_MIN = 40;
+const STATE = {qIdx:0,answers:{},timerSec:0,timerID:null};
+const $=id=>document.getElementById(id);
+const show=id=>$(id).style.display='block';
+const hide=id=>$(id).style.display='none';
+function fmtT(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function calcCNE(c,t){if(!t)return 1000;const z=((c/t)*100-50)/16.67;return Math.min(1300,Math.max(700,Math.round(1000+100*z)));}
+function cneColor(c){return c>=1050?'#1e8449':c>=950?'#d4ac0d':'#cc3300';}
+function cneLabel(c){return c>=1100?'Muy por encima de la media':c>=1050?'Por encima de la media':c>=950?'Cerca de la media':c>=900?'Por debajo de la media':'Muy por debajo de la media';}
+function shuffleReactivo(r){
+  if(r._opts)return;
+  const tc=r[r.correcta];
+  let opts=[{l:'a',t:r.a},{l:'b',t:r.b},{l:'c',t:r.c}];
+  if(r.tipo!=='asoc'&&r.tipo!=='comp'){
+    for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  }
+  r._opts=opts; r._answerKey=opts.find(o=>o.t===tc).l;
+}
+function startExam(){
+  STATE.qIdx=0;STATE.answers={};
+  BANCO.forEach(r=>{delete r._opts;delete r._answerKey;shuffleReactivo(r);});
+  hide('screen-home');buildNavGrid();show('screen-exam');startTimer();renderQ();
+}
+function retryExam(){hide('screen-results');startExam();}
+function startTimer(){
+  STATE.timerSec=TIEMPO_MIN*60;renderTimer();
+  STATE.timerID=setInterval(()=>{STATE.timerSec--;renderTimer();
+    if(STATE.timerSec<=0){clearInterval(STATE.timerID);timeOut();}},1000);
+}
+function renderTimer(){
+  const tb=$('timer-box');tb.textContent=fmtT(STATE.timerSec);
+  tb.className='timer-box'+(STATE.timerSec<=60?' danger':STATE.timerSec<=180?' warn':'');
+}
+function timeOut(){hide('screen-exam');show('screen-timeout');}
+function finishAndShow(){hide('screen-timeout');showResults();}
+function buildNavGrid(){
+  const g=$('nav-grid');g.innerHTML='';
+  BANCO.forEach((r,i)=>{
+    const b=document.createElement('button');
+    b.className='nav-btn';b.id='nb-'+i;b.textContent=i+1;b.title=r.tipo;
+    b.onclick=(()=>{const x=i;return()=>goTo(x);})();
+    g.appendChild(b);
+  });
+  updateNav();
+}
+function updateNav(){
+  BANCO.forEach((r,i)=>{
+    const b=$('nb-'+i);if(!b)return;
+    let cls='nav-btn';
+    if(STATE.answers.hasOwnProperty(i))cls+=STATE.answers[i]===r._answerKey?' answered':' wrong-nav';
+    if(i===STATE.qIdx)cls+=' current';
+    b.className=cls;
+  });
+  $('progress-bar').style.width=(Object.keys(STATE.answers).length/BANCO.length*100)+'%';
+}
+function goTo(i){if(i<0||i>=BANCO.length)return;STATE.qIdx=i;renderQ();}
+function renderQ(){
+  const r=BANCO[STATE.qIdx],n=BANCO.length,i=STATE.qIdx;
+  $('q-num').textContent='Pregunta '+(i+1)+' de '+n;
+  $('q-text').textContent=r.enunciado;
+  $('btn-prev').disabled=i===0;
+  $('btn-next-nav').disabled=i===n-1;
+  $('btn-entregar').style.display=i===n-1?'block':'none';
+  const con=$('options');con.innerHTML='';
+  const saved=STATE.answers.hasOwnProperty(i)?STATE.answers[i]:null;
+  const answered=saved!==null,cl=r._answerKey;
+  r._opts.forEach(o=>{
+    const btn=document.createElement('button');
+    btn.className='opt-btn';btn.dataset.key=o.l;
+    const sm=r.tipo==='asoc'||r.tipo==='comp';
+    btn.innerHTML='<span class="opt-letter">'+o.l.toUpperCase()+'</span><span style="'+(sm?'font-size:.83rem;line-height:1.6;':'')+'">'+o.t+'</span>';
+    if(answered){
+      btn.disabled=true;
+      if(saved===cl){if(o.l===cl)btn.classList.add('correct');}
+      else{if(o.l===saved)btn.classList.add('wrong');if(o.l===cl)btn.classList.add('correct');}
+    }else{btn.onclick=()=>selectOpt(o.l,btn);}
+    con.appendChild(btn);
+  });
+  const ex=$('explanation');
+  if(answered){
+    const ok=saved===cl;
+    ex.innerHTML=(ok?'✅ ':'❌ ')+(r.exp||'Respuesta correcta: '+cl.toUpperCase());
+    ex.className='explanation show'+(ok?'':' fail');
+  }else{ex.className='explanation';ex.innerHTML='';}
+  updateNav();
+}
+function selectOpt(key,cb){
+  const r=BANCO[STATE.qIdx];STATE.answers[STATE.qIdx]=key;
+  const cl=r._answerKey,ok=key===cl;
+  document.querySelectorAll('.opt-btn').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.key===cl)b.classList.add('correct');
+    if(b===cb&&!ok)b.classList.add('wrong');
+  });
+  const ex=$('explanation');
+  ex.innerHTML=(ok?'✅ ':'❌ ')+(r.exp||'Respuesta correcta: '+cl.toUpperCase());
+  ex.className='explanation show'+(ok?'':' fail');
+  updateNav();
+}
+function pedirConfirmar(){
+  const p=BANCO.length-Object.keys(STATE.answers).length;
+  $('modal-msg').innerHTML=p>0?'Tienes <strong>'+p+'</strong> pregunta(s) sin responder. ¿Entregar?':'¿Entregar el simulacro?';
+  $('modal-bg').classList.add('open');
+}
+function cerrarModal(){$('modal-bg').classList.remove('open');}
+function confirmarEntrega(){cerrarModal();clearInterval(STATE.timerID);hide('screen-exam');showResults();}
+function showResults(){
+  let c=0,w=0,sk=0;
+  const porTipo={};
+  BANCO.forEach((r,i)=>{
+    const t=r.tipo||'regular';
+    if(!porTipo[t])porTipo[t]={c:0,t2:0,nom:t};
+    porTipo[t].t2++;
+    if(!STATE.answers.hasOwnProperty(i))sk++;
+    else if(STATE.answers[i]===r._answerKey){c++;porTipo[t].c++;}
+    else w++;
+  });
+  const tot=BANCO.length,pct=Math.round(c/tot*100),cne=calcCNE(c,tot),col=cneColor(cne);
+  $('res-score').textContent=c+'/'+tot+' ('+pct+'%)';
+  $('res-ok').textContent=c;$('res-fail').textContent=w;$('res-skip').textContent=sk;
+  $('cne-val').textContent=cne;$('cne-val').style.color=col;
+  $('cne-lbl').textContent=cneLabel(cne);$('cne-lbl').style.color=col;
+  $('cne-bar').style.width=((cne-700)/600*100)+'%';$('cne-bar').style.background=col;
+  $('cne-note').textContent='Estimado con '+c+' aciertos de '+tot+' ('+pct+'%). Z=(X-50)/16.67, ICNE=1000+100Z.';
+  const rv=$('review-list');rv.innerHTML='';
+  BANCO.forEach((r,i)=>{
+    const g=STATE.answers[i],cl=r._answerKey;
+    const om={};r._opts.forEach(o=>om[o.l]=o.t);
+    let st='skip',bd='Sin responder';
+    if(g){st=g===cl?'ok':'fail';bd=g===cl?'Correcta':'Incorrecta';}
+    rv.innerHTML+='<div class="rev-item"><div class="rev-header">'
+      +'<span class="rev-badge '+st+'">'+bd+'</span>'
+      +'<span class="rev-num">P.'+(i+1)+'</span></div>'
+      +'<div class="rev-q" style="white-space:pre-line;">'+r.enunciado+'</div>'
+      +(g?'<div class="rev-ans">Tu resp: '+g.toUpperCase()+') '+(om[g]||'')+'</div>':'')
+      +(g!==cl?'<div class="rev-ans ok-ans">✓ Correcta: '+cl.toUpperCase()+') '+(om[cl]||'')+'</div>':'')
+      +(r.exp?'<div class="rev-exp">💡 '+r.exp+'</div>':'')
+      +'</div>';
+  });
+  show('screen-results');
+}
+
+</script>
+</body>
+</html>
